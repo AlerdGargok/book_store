@@ -1,7 +1,6 @@
 package util;
 
-import modelos.*;
-
+import java.*;
 import java.util.List;
 import java.util.Scanner;
 

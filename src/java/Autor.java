@@ -1,4 +1,4 @@
-package modelos;
+package java;
 
 //Constroi o objeto autor a partir de uma String de nome
 

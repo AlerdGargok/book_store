@@ -1,7 +1,12 @@
-import modelos.*;
-import util.*;
 
+import java.Autor;
+import java.Biblioteca;
+import java.Editora;
+import java.Genero;
+import java.Livro;
 import java.util.Scanner;
+
+import util.*;
 
 /*Faz um loop para imprimir o menu enquanto o usuário não selecionar a opção de sair ou o programa finalizar
 Recebe os valores inseridos pelo usuário na classe interface para adicionar livros e chama o construtor para ser enviado ao arraylist da classe Biblioteca
