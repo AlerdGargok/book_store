@@ -5,7 +5,7 @@ import modelos.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class View{
+public class Interface{
     private static Scanner scanner = new Scanner(System.in);
     private String tituloLivro;
     private Autor autorLivro;
