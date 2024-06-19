@@ -1,10 +1,11 @@
-
-import java.Autor;
-import java.Biblioteca;
-import java.Editora;
-import java.Genero;
-import java.Livro;
 import java.util.Scanner;
+
+import model.Autor;
+import model.Biblioteca;
+import model.Editora;
+import model.Genero;
+import model.Livro;
+
 
 import util.*;
 

@@ -1,4 +1,4 @@
-package java;
+package model;
 
 //Constroi um objeto livro a partir dos outros obejtos autor, genero e editora. Recebe também uma string com o titulo do livro
 
