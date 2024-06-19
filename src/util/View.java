@@ -4,7 +4,7 @@ import java.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class Interface{
+public class View{
     private static Scanner scanner = new Scanner(System.in);
     private String tituloLivro;
     private Autor autorLivro;

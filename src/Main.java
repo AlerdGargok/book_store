@@ -18,7 +18,7 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Interface user = new Interface();
+        View user = new View();
         Biblioteca biblioteca = new Biblioteca("dados.txt");
         boolean menuLoop = true;
         Integer opMenu;
