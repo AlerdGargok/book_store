@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import util.FileManager;
 
-//Classe resposável por administrar a adição e remoção de livros, além de listar os mesmos que já foram inseridos
+//Classe responsável por administrar a adição e remoção de livros, além de listar os mesmos que já foram inseridos
 
 public class Biblioteca {
     private static List<Livro> livros;

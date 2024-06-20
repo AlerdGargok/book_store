@@ -1,16 +1,21 @@
 package util;
-
-import model.*;
 import java.util.List;
 import java.util.Scanner;
+import model.*;
+import util.user.*;
 
 public class View{
     private static Scanner scanner = new Scanner(System.in);
+    Cadastro cadastro = new Cadastro();
     private String tituloLivro;
     private Autor autorLivro;
     private Genero generoLivro;
     private Editora editoraLivro;
     private int cont;
+
+    private String username;
+    private String senha;
+    private String cpf;
 
     // Chama as listas estáticas de genero e editora (Já previamente selecionadas para o usuário)
     List<Genero> generos = Genero.getnomeGenero();
@@ -47,11 +52,11 @@ public class View{
         System.out.println("==========================================================");
         System.out.println();
         System.out.println("                 Insira o seu username:                   \n");
-        //username = scanner.nextLine(); ...
+        username = scanner.nextLine();
 
         System.out.println("                   Insira sua senha:                      \n");
         System.out.println("        *Caso tenha esquecido sua senha insira '0'*       \n");
-        //senha = scanner.nextLine(); ...
+        senha = scanner.nextLine();
 
         //Ir para um conferente de login incluso com um verificador de senhas, que para caso seja inserido 0 vá para um método de alteração de senhas com solictação de cpf
     }
@@ -62,14 +67,17 @@ public class View{
         System.out.println("==========================================================");
         System.out.println();
         System.out.println("                Insira o username desejado:               \n");
-        //newUsername = scanner.nextLine(); ...
-        //ir para validador para conferir se não já está cadastrado
+        username = scanner.nextLine();
+        cadastro.validarUser(username);
+
         System.out.println("            Insira o seu CPF: (Apenas números)            \n");
-        //cpf = scanner.nextInt
-        //ir para um validador de cpf (exception caso não seja válido?)
+        cpf = scanner.nextLine();
+        cadastro.validaCpf(cpf);
+
         System.out.println("                   Insira uma senha:                      \n");
-        //senha = scanner.nextLine(); ... (mínimo 8 char?)
-        //chamar validador de senha
+        senha = scanner.nextLine();
+        cadastro.validarSenha(senha);
+
     }
 
     public void imprimirLoginADM(){
@@ -241,7 +249,6 @@ public class View{
         }
     }
 
-
     public String get_tituloLivro(){
         return tituloLivro;
     }
@@ -256,6 +263,18 @@ public class View{
 
     public Editora get_editoraLivro(){
         return editoraLivro;
+    }
+
+    public String get_senha(){
+        return senha;
+    }
+
+    public String username(){
+        return username;
+    }
+
+    public String cpf(){
+        return cpf;
     }
 
 }
