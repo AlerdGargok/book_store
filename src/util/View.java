@@ -22,6 +22,70 @@ public class View{
         System.out.flush();
     }
 
+    public void imprimirInicio(){
+        System.out.println("==========================================================\n");
+        System.out.println("                      [BOOK STORE]                        \n");
+        System.out.println("==========================================================");
+        System.out.println();
+        System.out.println("                     SEJA BEM VINDO!                      \n");
+        System.out.println("           -> Escolha uma das opções abaixo: <-           ");
+        System.out.println();
+        System.out.println("==========================================================\n");
+        System.out.println("                 [1] Login (Usuário)                      ");
+        System.out.println("                 [2] Cadastro (Usuário)                   ");
+        System.out.println("                 [3] Login (Administrador)                ");
+        System.out.println("                 [4] Sair                                 ");
+        System.out.println("==========================================================");
+        System.out.println();
+        System.out.println();
+        System.out.println("Sua escolha: ");
+    }
+
+    public void imprimirLoginUser(){
+        System.out.println("==========================================================\n");
+        System.out.println("                    [Login - Usuário]                     \n");
+        System.out.println("==========================================================");
+        System.out.println();
+        System.out.println("                 Insira o seu username:                   \n");
+        //username = scanner.nextLine(); ...
+
+        System.out.println("                   Insira sua senha:                      \n");
+        System.out.println("        *Caso tenha esquecido sua senha insira '0'*       \n");
+        //senha = scanner.nextLine(); ...
+
+        //Ir para um conferente de login incluso com um verificador de senhas, que para caso seja inserido 0 vá para um método de alteração de senhas com solictação de cpf
+    }
+
+    public void imprimirCadastroUser(){
+        System.out.println("==========================================================\n");
+        System.out.println("                   [Cadastro - Usuário]                   \n");
+        System.out.println("==========================================================");
+        System.out.println();
+        System.out.println("                Insira o username desejado:               \n");
+        //newUsername = scanner.nextLine(); ...
+        //ir para validador para conferir se não já está cadastrado
+        System.out.println("            Insira o seu CPF: (Apenas números)            \n");
+        //cpf = scanner.nextInt
+        //ir para um validador de cpf (exception caso não seja válido?)
+        System.out.println("                   Insira uma senha:                      \n");
+        //senha = scanner.nextLine(); ... (mínimo 8 char?)
+        //chamar validador de senha
+    }
+
+    public void imprimirLoginADM(){
+        System.out.println("==========================================================\n");
+        System.out.println("                  [Login - Administrador]                 \n");
+        System.out.println("==========================================================");
+        System.out.println();
+        System.out.println("                 Insira o seu username:                   \n");
+        //username = scanner.nextLine(); ...
+
+        System.out.println("                   Insira sua senha:                      \n");
+        System.out.println("        *Caso tenha esquecido sua senha insira '0'*       \n");
+        //senha = scanner.nextLine(); ...
+        //Ir para um conferente de login incluso com um verificador de senhas, que para caso seja inserido 0 vá para um método de alteração de senhas com solictação de cpf
+    }
+    
     //Imprime o menu principal;
     public void imprimirMenu(){
         System.out.println("==========================================================\n");

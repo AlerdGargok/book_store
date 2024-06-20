@@ -6,7 +6,6 @@ import model.Editora;
 import model.Genero;
 import model.Livro;
 
-
 import util.*;
 
 /*Faz um loop para imprimir o menu enquanto o usuário não selecionar a opção de sair ou o programa finalizar
