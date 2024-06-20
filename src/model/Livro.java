@@ -7,7 +7,16 @@ public class Livro {
     private Autor autor;
     private Genero genero;
     private Editora editora;
-
+    private double valor;
+    
+    public Livro(String titulo, Autor autor, Genero genero, Editora editora, double valor) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.genero = genero;
+        this.editora = editora;
+        this.valor = valor;
+    }
+    //esse é o metodo padrao para criar um livro sem valor, caso isso aconteça ele cai nesse
     public Livro(String titulo, Autor autor, Genero genero, Editora editora) {
         this.titulo = titulo;
         this.autor = autor;
@@ -15,6 +24,7 @@ public class Livro {
         this.editora = editora;
     }
 
+    //get e set do titulo do livro
     public String getTitulo() {
         return titulo;
     }
@@ -23,6 +33,7 @@ public class Livro {
         this.titulo = titulo;
     }
 
+    //Get e set do autor do livro
     public Autor getAutor() {
         return autor;
     }
@@ -35,6 +46,7 @@ public class Livro {
         this.autor = autor;
     }
 
+    //Get e set do genero do livro
     public Genero getGenero() {
         return genero;
     }
@@ -47,6 +59,7 @@ public class Livro {
         this.genero = genero;
     }
 
+    //Get e set da editora do livro
     public Editora getEditora() {
         return editora;
     }
@@ -58,11 +71,26 @@ public class Livro {
     public void setEditora(Editora editora) {
         this.editora = editora;
     }
+    
+    //Get e set do valor do livro
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+    
+    public double getValor() {
+        return valor;
+    }
 
-    @Override
+
+   @Override
     public String toString() {
-    return "Título: " + titulo + ", Autor: " + autor + ", Gênero: " + genero + ", Editora: " + editora;
-}
+        //caso o livro nao tenha valor mostrar sem o valor mesmo 
+        try {
+            return "Título: " + titulo + ", Autor: " + autor + ", Gênero: " + genero + ", Editora: " + editora + ", Valor: R$" + valor;
+        } catch (Exception e) {
+            return "Título: " + titulo + ", Autor: " + autor + ", Gênero: " + genero + ", Editora: " + editora;
+        }
+    }   
 
 
 

@@ -18,13 +18,15 @@ public class Cadastro {
     //criar remover usuario? (para adm)
 
     public void validarUser(String username) {
-        for (User novoUsuario : usuarios) {
-            if (novoUsuario.getUsername().equalsIgnoreCase(username)) {
-                return;
+        try {
+            for (User novoUsuario : usuarios) {
+                if (novoUsuario.getUsername().equalsIgnoreCase(username)) {
+                    return;
+                }
             }
+        } catch (Exception e) {
+            System.out.println("Username inválido!");
         }
-
-        //excpetion de erro? fazer o usuario digitar um username válido
     }
 
     public boolean validaCpf(String cpf){ //ajustar!!!!!!!!!
