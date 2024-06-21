@@ -1,4 +1,6 @@
+import java.util.List;
 import java.util.Scanner;
+
 
 import model.Autor;
 import model.Biblioteca;
@@ -7,6 +9,9 @@ import model.Genero;
 import model.Livro;
 
 import util.*;
+import util.user.Cadastro;
+import util.user.User;
+
 
 /*Faz um loop para imprimir o menu enquanto o usuário não selecionar a opção de sair ou o programa finalizar
 Recebe os valores inseridos pelo usuário na classe interface para adicionar livros e chama o construtor para ser enviado ao arraylist da classe Biblioteca
@@ -20,8 +25,43 @@ public class Main {
     public static void main(String[] args) {
         View user = new View();
         Biblioteca biblioteca = new Biblioteca("dados.txt");
+        Cadastro cadastro = new Cadastro();
         boolean menuLoop = true;
         Integer opMenu;
+
+        do{
+            //user.Flush();
+            user.imprimirInicio();
+            opMenu=scanner.nextInt();
+                
+            switch(opMenu) {
+                case 1 :
+                user.imprimirLoginUser();
+                break;
+
+                case 2:
+                user.imprimirCadastroUser();
+
+                String username = user.get_username();
+                String senha = user.get_senha();
+                String cpf = user.get_cpf();
+
+                User novoUsuario = new User(username, cpf, senha);
+                user.Flush();
+
+                cadastro.addUsuario(novoUsuario);
+
+                // Teste
+                List<User> usuarios = cadastro.listarUsuarios();
+                for (User usuario : usuarios) {
+                    System.out.println(usuario);
+                }
+                //
+                break;
+            }
+        }while(menuLoop);
+
+        /** 
         Integer escolha;
         String procura; // variavel para procurar por autor, genero ou editora
 
@@ -90,6 +130,7 @@ public class Main {
             }
 
         } while (menuLoop);
-
+        */
     }
+        
 }

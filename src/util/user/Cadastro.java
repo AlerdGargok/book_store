@@ -1,8 +1,8 @@
 package util.user;
+import util.View;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Cadastro {
     private static List<User> usuarios;
@@ -15,25 +15,35 @@ public class Cadastro {
         usuarios.add(novoUsuario);
     }
 
-    //criar remover usuario? (para adm)
-
-    public void validarUser(String username) {
-        try {
-            for (User novoUsuario : usuarios) {
-                if (novoUsuario.getUsername().equalsIgnoreCase(username)) {
-                    return;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Username inválido!");
-        }
+    public List<User> listarUsuarios() {
+        return new ArrayList<>(usuarios);
     }
 
-    public boolean validaCpf(String cpf){ //ajustar!!!!!!!!!
-        if(cpf.length() != 11 || !cpf.matches("\\d+") || cpf.matches("(\\d)\\1*")){ 
+    //criar remover usuario? (para adm)
 
-        System.out.println("CPF inválido, digite novamente: ");
-        return false;
+    public boolean validarUser(String username) {
+            for (User usuario : usuarios) {
+                if (usuario.getUsername().equalsIgnoreCase(username)) {
+                    return false;
+                }
+            }
+            return true;
+    }
+
+    public static int contarDigitos(String texto) {
+        int contador = 0;
+        for (int i = 0; i < texto.length(); i++) {
+            if (Character.isDigit(texto.charAt(i))) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+    public boolean validarCpf(String cpf){ 
+
+        if(cpf.length() != 11 || !cpf.matches("\\d+") || cpf.matches("(\\d)\\1*")){ 
+            return false;
     }
 
         for(int j = 0; j < 2; j++){
@@ -50,7 +60,6 @@ public class Cadastro {
             }
 
             if(resto != Integer.parseInt(cpf.charAt(j + 9) + "")){
-                System.out.println("CPF inválido, digite novamente: ");
                 return false;
             }
         }
@@ -59,12 +68,21 @@ public class Cadastro {
 
     }
 
-    public void validarSenha(String senha) {
-        // Verificar se a senha tem pelo menos 8 caracteres
-        if (senha.length() >= 8) {
-            return;
-        }
-        
-        //excpetion de erro? fazer o usuario digitar uma senha válida
+    // Verificar se a senha tem pelo menos 8 caracteres
+    public boolean validarSenha(String senha) {
+        View user = new View();
+        if (senha.equals("0")) user.recuperarSenha();
+        if (senha.length() >= 8) return true;
+
+        return false;
      }
+
+     public boolean consultarCpf(String cpf) {
+        for (User usuario : usuarios) {
+            if (usuario.getCpf().equals(cpf)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }   

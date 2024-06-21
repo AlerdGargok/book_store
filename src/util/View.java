@@ -13,11 +13,15 @@ public class View {
     private Genero generoLivro;
     private Editora editoraLivro;
     private double valorLivro;
-    private int cont;
+    //private int cont;
 
     private String username;
     private String senha;
     private String cpf;
+
+    private boolean usernameValido;
+    private boolean cpfValido;
+    private boolean senhaValida;
 
     // Chama as listas estáticas de genero e editora (Já previamente selecionadas
     // para o usuário)
@@ -50,39 +54,138 @@ public class View {
     }
 
     public void imprimirLoginUser() {
+        Flush();
+        scanner.nextLine();
+
         System.out.println("==========================================================\n");
         System.out.println("                    [Login - Usuário]                     \n");
         System.out.println("==========================================================");
         System.out.println();
-        System.out.println("                 Insira o seu username:                   \n");
-        username = scanner.nextLine();
 
-        System.out.println("                   Insira sua senha:                      \n");
-        System.out.println("        *Caso tenha esquecido sua senha insira '0'*       \n");
-        senha = scanner.nextLine();
+        usernameValido = false;
+        while(!usernameValido){
+            System.out.println("                 Insira o seu username:                   \n");
+            username = scanner.next();
+            usernameValido = cadastro.validarUser(username);
 
-        // Ir para um conferente de login incluso com um verificador de senhas, que para
-        // caso seja inserido 0 vá para um método de alteração de senhas com solictação
-        // de cpf
+            if(!usernameValido) {
+                System.out.println("       Username não existe, digite novamente          \n");
+            }
+        }
+
+        senhaValida = false;
+        while(!senhaValida) {
+            System.out.println("                   Insira sua senha:                      \n");
+            System.out.println("        *Caso tenha esquecido sua senha insira '0'*       \n");
+            senha = scanner.next();
+            senhaValida = cadastro.validarSenha(senha);
+
+            if (!senhaValida) {
+                System.out.println("          Senha inválida, digite novamente             \n");
+            }
+        }
+
+        //continuar area de usuario
     }
 
     public void imprimirCadastroUser() {
+        Flush();
         System.out.println("==========================================================\n");
         System.out.println("                   [Cadastro - Usuário]                   \n");
         System.out.println("==========================================================");
         System.out.println();
-        System.out.println("                Insira o username desejado:               \n");
-        username = scanner.nextLine();
-        cadastro.validarUser(username);
+        
+        usernameValido = false;
+        while(!usernameValido){
+            System.out.println("                Insira o username desejado:               \n");
+            username = scanner.next();
+            usernameValido = cadastro.validarUser(username);
 
-        System.out.println("            Insira o seu CPF: (Apenas números)            \n");
-        cpf = scanner.nextLine();
-        cadastro.validaCpf(cpf);
+            if(!usernameValido) {
+                System.out.println("     Username não disponível, digite novamente        \n");
+            }
+        }
 
-        System.out.println("                   Insira uma senha:                      \n");
-        senha = scanner.nextLine();
-        cadastro.validarSenha(senha);
+        cpfValido = false;
+        while (!cpfValido) {
+            System.out.println("            Insira o seu CPF: (Apenas números)            \n");
+            cpf = scanner.next();
+            cpfValido = cadastro.validarCpf(cpf);
 
+            if (!cpfValido) {
+                System.out.println("          CPF inválido, digite novamente              \n");
+            }
+        }
+
+        senhaValida = false;
+        while(!senhaValida) {
+            System.out.println("                   Insira uma senha:                      \n");
+            senha = scanner.next();
+            senhaValida = cadastro.validarSenha(senha);
+
+            if (!senhaValida) {
+                System.out.println("          Senha inválida, digite novamente             \n");
+            }
+        }
+
+        System.out.println();
+        System.out.println("   Cadastro concluído com sucesso! Voltando para o menu...     \n");
+        try {
+            Thread.sleep(2000); // Pausa por 2 segundos
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    public void recuperarSenha() {
+        Flush();
+        System.out.println("==========================================================\n");
+        System.out.println("                    [Recuperar Senha]                     \n");
+        System.out.println("==========================================================");
+        System.out.println();
+
+        usernameValido = true;
+        while(usernameValido){
+            System.out.println("                 Insira o seu username:                   \n");
+            username = scanner.next();
+            usernameValido = cadastro.validarUser(username);
+
+            if(usernameValido) {
+                System.out.println("       Username não existe, digite novamente          \n");
+            }
+        }
+
+        cpfValido = false;
+        while(!cpfValido){
+            System.out.println("                   Insira o seu CPF:                      \n");
+            cpf = scanner.next();
+            cpfValido = cadastro.validarUser(cpf);
+
+            if(!cpfValido) {
+                System.out.println("          CPF inválido, digite novamente              \n");
+            }
+        }
+
+        senhaValida = false;
+        while(!senhaValida) {
+            System.out.println("                  Insira uma nova senha:                  \n");
+            senha = scanner.next();
+            senhaValida = cadastro.validarSenha(senha);
+
+            if (!senhaValida) {
+                System.out.println("          Senha inválida, digite novamente             \n");
+            }
+        }
+
+        System.out.println();
+        System.out.println("     Senha cadastrada com sucesso! Voltando para o menu...     \n");
+        try {
+            Thread.sleep(2000); // Pausa por 2 segundos
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        imprimirLoginUser();
     }
 
     public void imprimirLoginADM() {
@@ -127,9 +230,9 @@ public class View {
     // ser escolhida qual ser utilizada
 
     public void adicionarLivro() {
-        cont++;
+        //cont++;
         Flush();
-        if (cont > 1)
+        //if (cont > 1)
             scanner.nextLine();
         System.out.println("==========================================================\n");
         System.out.println("                 [Adicionar um novo Livro]                \n");
@@ -286,11 +389,11 @@ public class View {
         return senha;
     }
 
-    public String username() {
+    public String get_username() {
         return username;
     }
 
-    public String cpf() {
+    public String get_cpf() {
         return cpf;
     }
 
