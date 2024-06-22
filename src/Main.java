@@ -30,7 +30,7 @@ public class Main {
         Integer opMenu;
 
         do{
-            //user.Flush();
+            user.Flush();
             user.imprimirInicio();
             opMenu=scanner.nextInt();
                 
@@ -54,7 +54,7 @@ public class Main {
                 // Teste
                 List<User> usuarios = cadastro.listarUsuarios();
                 for (User usuario : usuarios) {
-                    System.out.println(usuario);
+                    System.out.println(usuario.getUsername());
                 }
                 //
                 break;

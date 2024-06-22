@@ -55,8 +55,6 @@ public class View {
 
     public void imprimirLoginUser() {
         Flush();
-        scanner.nextLine();
-
         System.out.println("==========================================================\n");
         System.out.println("                    [Login - Usuário]                     \n");
         System.out.println("==========================================================");
@@ -78,7 +76,8 @@ public class View {
             System.out.println("                   Insira sua senha:                      \n");
             System.out.println("        *Caso tenha esquecido sua senha insira '0'*       \n");
             senha = scanner.next();
-            senhaValida = cadastro.validarSenha(senha);
+            if(senha.equals("0")) recuperarSenha();
+            senhaValida = cadastro.validarUser_Senha(senha);
 
             if (!senhaValida) {
                 System.out.println("          Senha inválida, digite novamente             \n");
@@ -95,13 +94,13 @@ public class View {
         System.out.println("==========================================================");
         System.out.println();
         
-        usernameValido = false;
-        while(!usernameValido){
+        usernameValido = true;
+        while(usernameValido){
             System.out.println("                Insira o username desejado:               \n");
             username = scanner.next();
             usernameValido = cadastro.validarUser(username);
 
-            if(!usernameValido) {
+            if(usernameValido) {
                 System.out.println("     Username não disponível, digite novamente        \n");
             }
         }
@@ -148,7 +147,7 @@ public class View {
         while(usernameValido){
             System.out.println("                 Insira o seu username:                   \n");
             username = scanner.next();
-            usernameValido = cadastro.validarUser(username);
+            usernameValido = cadastro.validarUser_Senha(username);
 
             if(usernameValido) {
                 System.out.println("       Username não existe, digite novamente          \n");
@@ -159,7 +158,7 @@ public class View {
         while(!cpfValido){
             System.out.println("                   Insira o seu CPF:                      \n");
             cpf = scanner.next();
-            cpfValido = cadastro.validarUser(cpf);
+            cpfValido = cadastro.validarUser_Cpf(cpf);
 
             if(!cpfValido) {
                 System.out.println("          CPF inválido, digite novamente              \n");
@@ -176,7 +175,6 @@ public class View {
                 System.out.println("          Senha inválida, digite novamente             \n");
             }
         }
-
         System.out.println();
         System.out.println("     Senha cadastrada com sucesso! Voltando para o menu...     \n");
         try {
