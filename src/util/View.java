@@ -89,6 +89,7 @@ public class View {
 
     public void imprimirCadastroUser() {
         Flush();
+        cadastro.listarUsuarios();
         System.out.println("==========================================================\n");
         System.out.println("                   [Cadastro - Usuário]                   \n");
         System.out.println("==========================================================");
@@ -126,6 +127,12 @@ public class View {
                 System.out.println("          Senha inválida, digite novamente             \n");
             }
         }
+
+        //tá resetando o arraylist para ficar registrado apenas o mais recente gravado (ajustar!!!!!)
+
+        cadastro.listarUsuarios();
+        User novoUsuario = new User(username, cpf, senha);
+        cadastro.addUsuario(novoUsuario);
 
         System.out.println();
         System.out.println("   Cadastro concluído com sucesso! Voltando para o menu...     \n");
@@ -318,7 +325,7 @@ public class View {
 
     public void removerLivros() {
         System.out.println("==========================================================\n");
-        System.out.println("                 [Remover um novo Livro]                \n");
+        System.out.println("                     [Remover um Livro]                   \n");
         System.out.println("==========================================================");
         System.out.println("                  Digite o nome do livro:              \n");
     }

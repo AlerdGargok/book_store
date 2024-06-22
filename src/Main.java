@@ -29,9 +29,16 @@ public class Main {
         boolean menuLoop = true;
         Integer opMenu;
 
+        User user1 = new User("user1", "senha12345", "12345678901");
+        cadastro.addUsuario(user1);
+
+        User user2 = new User("user2", "senha54321", "10987654321");
+        cadastro.addUsuario(user2);
+
         do{
             user.Flush();
             user.imprimirInicio();
+            cadastro.listarUsuarios();
             opMenu=scanner.nextInt();
                 
             switch(opMenu) {
@@ -42,21 +49,6 @@ public class Main {
                 case 2:
                 user.imprimirCadastroUser();
 
-                String username = user.get_username();
-                String senha = user.get_senha();
-                String cpf = user.get_cpf();
-
-                User novoUsuario = new User(username, cpf, senha);
-                user.Flush();
-
-                cadastro.addUsuario(novoUsuario);
-
-                // Teste
-                List<User> usuarios = cadastro.listarUsuarios();
-                for (User usuario : usuarios) {
-                    System.out.println(usuario.getUsername());
-                }
-                //
                 break;
             }
         }while(menuLoop);

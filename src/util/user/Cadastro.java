@@ -8,20 +8,20 @@ public class Cadastro {
     private static List<User> usuarios;
 
     public Cadastro(){
-        usuarios = new ArrayList<>(); 
+        this.usuarios = new ArrayList<>(); 
     }
 
     public void addUsuario(User novoUsuario){
         usuarios.add(novoUsuario);
     }
 
-    public List<User> listarUsuarios() {
-        return new ArrayList<>(usuarios);
+    public void listarUsuarios() {
+        System.out.println(usuarios);
     }
 
     //criar remover usuario? (para adm)
 
-    public static boolean validarUser(String username) {
+    public boolean validarUser(String username) {
         for (User usuario : usuarios) {
             if (usuario.getUsername().equalsIgnoreCase(username)) {
                 return true;
