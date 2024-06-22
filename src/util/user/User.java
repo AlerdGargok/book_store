@@ -1,9 +1,31 @@
 package util.user;
 
+import java.util.ArrayList;
+
+import model.Livro;
+
 public class User {
     private String username;
     private String senha;
     private String cpf;
+
+    //area relacionada a compra dos livros
+    //lista dos livros que ele comprou
+    private ArrayList<Livro> livrosComprados = new ArrayList<Livro>();
+    //quando comprar um livro adicionar na lista
+    public void addLivrosComprado (Livro livro){
+        livrosComprados.add(livro);
+    }
+    //para listar os livros que ele ja comprou
+    //preciso que termine a parte de usuario para poder fazer que quando a pessoa tem saldo e compre o livro
+    //remova da biblioteca e adicione aqui
+    public void listarLivrosComprados(){
+        for (Livro livro : livrosComprados) {
+            System.out.println(livro);
+        }
+    }
+    
+
 
     public User(String username, String cpf, String senha) {
         this.username = username;
