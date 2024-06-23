@@ -7,6 +7,24 @@ import java.util.List;
 public class Cadastro {
     private static List<User> usuarios = new ArrayList<>(); 
     private static final User adm = new User("adm", "12345678901", "administrador");
+    private static User usuarioAtual;
+
+
+    //metodo para atualizar o usuario atual com nick
+    //preciso que mude para cpf, quando se logar resgatar o cpf do meliante e colocar aq
+    //assim nao da conflito com ninguem valeu
+    public void atualizarUserAtual(String nick){
+        for (User usuario : usuarios) {
+            if (usuario.getUsername().equalsIgnoreCase(nick)) {
+                usuarioAtual = usuario;
+            }
+        }
+    }
+    public User getUsuarioAtual() {
+        return usuarioAtual;
+    }
+
+    //fim da area do usuario atual
 
     public void addUsuario(User novoUsuario){
         usuarios.add(novoUsuario);

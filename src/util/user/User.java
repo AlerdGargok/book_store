@@ -8,6 +8,7 @@ public class User {
     private String username;
     private String senha;
     private String cpf;
+    private double saldo;
 
     //area relacionada a compra dos livros
     //lista dos livros que ele comprou
@@ -45,6 +46,10 @@ public class User {
         return cpf;
     }
 
+    public double getSaldo() {
+        return saldo;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -54,6 +59,10 @@ public class User {
     }
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+    
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     @Override

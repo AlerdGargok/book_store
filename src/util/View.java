@@ -53,6 +53,7 @@ public class View {
         System.out.println("Sua escolha: ");
     }
 
+    //preciso que quando a pessoa se logue retorne um usuario para ser o usuario logado atual
     public void imprimirLoginUser() {
         Flush();
         System.out.println("==========================================================\n");
@@ -85,7 +86,12 @@ public class View {
         }
 
         if(cadastro.verificaAdm(username, senha)) imprimirAdm();
-        else imprimirLoja1();
+        else  {
+            cadastro.atualizarUserAtual(username);
+            imprimirLoja1();
+        }
+        
+        
     }
 
     public void imprimirLoja1() {
@@ -111,6 +117,7 @@ public class View {
         scanner.nextLine();
     }
 
+    //
     public void imprimirCadastroUser() {
         Flush();
         System.out.println("==========================================================\n");
@@ -153,7 +160,6 @@ public class View {
             }
         }
 
-        //tá resetando o arraylist para ficar registrado apenas o mais recente gravado (ajustar!!!!!)
 
         User novoUsuario = new User(username, cpf, senha);
         cadastro.addUsuario(novoUsuario);
