@@ -32,6 +32,16 @@ public class User {
         this.username = username;
         this.senha = senha;
         this.cpf = cpf;
+        this.saldo = 0;
+    }
+
+    public boolean adicionarSaldo(double saldomais){
+        try {
+            saldo+= saldomais;
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public String getUsername() {

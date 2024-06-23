@@ -13,13 +13,17 @@ public class Cadastro {
     //metodo para atualizar o usuario atual com nick
     //preciso que mude para cpf, quando se logar resgatar o cpf do meliante e colocar aq
     //assim nao da conflito com ninguem valeu
-    public void atualizarUserAtual(String nick){
+    public void setUsuarioAtual(String nick) {
         for (User usuario : usuarios) {
+            System.out.println("entrou aq");
             if (usuario.getUsername().equalsIgnoreCase(nick)) {
-                usuarioAtual = usuario;
+                Cadastro.usuarioAtual = usuario;
+                System.out.println("funfou");
             }
+            else System.out.println("deu nao");
         }
     }
+
     public User getUsuarioAtual() {
         return usuarioAtual;
     }

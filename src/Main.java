@@ -40,6 +40,9 @@ public class Main {
             switch(opMenu) {
                 case 1 :
                 tipoLogin = user.imprimirLoginUser();
+                    if (tipoLogin != 0){
+                        menuLoop = false;
+                    }
                 break;
 
                 case 2:
@@ -51,13 +54,21 @@ public class Main {
                 break;
             }
 
-            //area dos menus, 1 - usuario, 2 - adm
-            if (tipoLogin == 1){
-                int menu = user.imprimirMenuUsuario();
-
-            }
         }while(menuLoop);
 
+        menuLoop = true;
+
+        do {
+
+             //area dos menus, 1 - usuario, 2 - adm
+             if (tipoLogin == 1){
+                int menu = user.imprimirMenuUsuario();
+                //se for um ele vai para os dados de usuario, como ver os livros ja comprados e adicionar saldo
+                    if (menu == 1){
+                        user.imprimirDadosUsuario(cadastro.getUsuarioAtual());
+                    }
+            }
+        } while (menuLoop);
 
         /** 
         Integer escolha;
