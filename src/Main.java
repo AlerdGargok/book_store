@@ -29,16 +29,11 @@ public class Main {
         boolean menuLoop = true;
         Integer opMenu;
 
-        User user1 = new User("user1", "senha12345", "12345678901");
-        cadastro.addUsuario(user1);
-
-        User user2 = new User("user2", "senha54321", "10987654321");
-        cadastro.addUsuario(user2);
+        cadastro.addAdm();
 
         do{
             user.Flush();
             user.imprimirInicio();
-            cadastro.listarUsuarios();
             opMenu=scanner.nextInt();
                 
             switch(opMenu) {
@@ -48,7 +43,10 @@ public class Main {
 
                 case 2:
                 user.imprimirCadastroUser();
+                break;
 
+                case 3:
+                menuLoop = false;
                 break;
             }
         }while(menuLoop);

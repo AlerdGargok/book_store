@@ -22,6 +22,7 @@ public class View {
     private boolean usernameValido;
     private boolean cpfValido;
     private boolean senhaValida;
+    private boolean cpfRegistrado;
 
     // Chama as listas estáticas de genero e editora (Já previamente selecionadas
     // para o usuário)
@@ -40,13 +41,12 @@ public class View {
         System.out.println("==========================================================");
         System.out.println();
         System.out.println("                     SEJA BEM VINDO!                      \n");
-        System.out.println("           -> Escolha uma das opções abaixo: <-           ");
+        System.out.println("         -> Faça o login ou cadastre-se abaixo: <-        ");
         System.out.println();
         System.out.println("==========================================================\n");
-        System.out.println("                 [1] Login (Usuário)                      ");
-        System.out.println("                 [2] Cadastro (Usuário)                   ");
-        System.out.println("                 [3] Login (Administrador)                ");
-        System.out.println("                 [4] Sair                                 ");
+        System.out.println("                      [1] Login                           ");
+        System.out.println("                      [2] Cadastro                        ");
+        System.out.println("                      [3] Sair                            ");
         System.out.println("==========================================================");
         System.out.println();
         System.out.println();
@@ -84,12 +84,35 @@ public class View {
             }
         }
 
-        //continuar area de usuario
+        if(cadastro.verificaAdm(username, senha)) imprimirAdm();
+        else imprimirLoja1();
+    }
+
+    public void imprimirLoja1() {
+        Flush();
+        System.out.println("==========================================================\n");
+        System.out.println("                      [BOOK STORE]                        \n");
+        System.out.println("==========================================================");
+        System.out.println();
+        System.out.printf("                  SEJA BEM VINDO, %s!                      \n", username);
+        System.out.println();
+        System.out.println("==========================================================");
+        scanner.nextLine();
+        scanner.nextLine();
+
+    }
+
+    public void imprimirAdm() {
+        Flush();
+        System.out.println("==========================================================\n");
+        System.out.println("                      [BOOK STORE]                        \n");
+        System.out.println("==========================================================");
+        scanner.nextLine();
+        scanner.nextLine();
     }
 
     public void imprimirCadastroUser() {
         Flush();
-        cadastro.listarUsuarios();
         System.out.println("==========================================================\n");
         System.out.println("                   [Cadastro - Usuário]                   \n");
         System.out.println("==========================================================");
@@ -107,12 +130,14 @@ public class View {
         }
 
         cpfValido = false;
+        cpfRegistrado = true;
         while (!cpfValido) {
             System.out.println("            Insira o seu CPF: (Apenas números)            \n");
             cpf = scanner.next();
             cpfValido = cadastro.validarCpf(cpf);
+            cpfRegistrado = cadastro.validarUser_Cpf(cpf);
 
-            if (!cpfValido) {
+            if (!cpfValido || cpfRegistrado) {
                 System.out.println("          CPF inválido, digite novamente              \n");
             }
         }
@@ -130,7 +155,6 @@ public class View {
 
         //tá resetando o arraylist para ficar registrado apenas o mais recente gravado (ajustar!!!!!)
 
-        cadastro.listarUsuarios();
         User novoUsuario = new User(username, cpf, senha);
         cadastro.addUsuario(novoUsuario);
 
@@ -191,22 +215,6 @@ public class View {
         }
 
         imprimirLoginUser();
-    }
-
-    public void imprimirLoginADM() {
-        System.out.println("==========================================================\n");
-        System.out.println("                  [Login - Administrador]                 \n");
-        System.out.println("==========================================================");
-        System.out.println();
-        System.out.println("                 Insira o seu username:                   \n");
-        // username = scanner.nextLine(); ...
-
-        System.out.println("                   Insira sua senha:                      \n");
-        System.out.println("        *Caso tenha esquecido sua senha insira '0'*       \n");
-        // senha = scanner.nextLine(); ...
-        // Ir para um conferente de login incluso com um verificador de senhas, que para
-        // caso seja inserido 0 vá para um método de alteração de senhas com solictação
-        // de cpf
     }
 
     // Imprime o menu principal;
@@ -388,18 +396,6 @@ public class View {
 
     public double getValorLivro() {
         return valorLivro;
-    }
-
-    public String get_senha() {
-        return senha;
-    }
-
-    public String get_username() {
-        return username;
-    }
-
-    public String get_cpf() {
-        return cpf;
     }
 
 }

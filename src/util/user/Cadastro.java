@@ -5,18 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cadastro {
-    private static List<User> usuarios;
-
-    public Cadastro(){
-        this.usuarios = new ArrayList<>(); 
-    }
+    private static List<User> usuarios = new ArrayList<>(); 
+    private static final User adm = new User("adm", "12345678901", "administrador");
 
     public void addUsuario(User novoUsuario){
         usuarios.add(novoUsuario);
     }
 
+    public void addAdm() {
+        addUsuario(adm);
+    }
+
+
     public void listarUsuarios() {
         System.out.println(usuarios);
+    }
+
+    public boolean verificaAdm(String username, String senha) {
+            if(username.equals("adm") && senha.equals("administrador")) return true;
+            return false;
     }
 
     //criar remover usuario? (para adm)
