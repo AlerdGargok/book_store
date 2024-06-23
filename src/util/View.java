@@ -53,8 +53,8 @@ public class View {
         System.out.println("Sua escolha: ");
     }
 
-    //preciso que quando a pessoa se logue retorne um usuario para ser o usuario logado atual
-    public void imprimirLoginUser() {
+    
+    public int imprimirLoginUser() {
         Flush();
         System.out.println("==========================================================\n");
         System.out.println("                    [Login - Usuário]                     \n");
@@ -87,14 +87,23 @@ public class View {
 
         if(cadastro.verificaAdm(username, senha)) imprimirAdm();
         else  {
+            System.out.println("          Login efetuado com sucesso!            \n");
             cadastro.atualizarUserAtual(username);
-            imprimirLoja1();
+            try {
+                Thread.sleep(2000); // Pausa por 2 segundos
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            return 1;
         }
         
-        
+        return 0; // caso retorne 0 - deu errado, caso retorne 1- va para o menu de usuario e caso retorne 2 - menu adm
+        //arrumar aq dps
     }
 
-    public void imprimirLoja1() {
+    //espaço para usuario
+    public int imprimirMenuUsuario() {
+        int escolha;
         Flush();
         System.out.println("==========================================================\n");
         System.out.println("                      [BOOK STORE]                        \n");
@@ -103,11 +112,20 @@ public class View {
         System.out.printf("                  SEJA BEM VINDO, %s!                      \n", username);
         System.out.println();
         System.out.println("==========================================================");
-        scanner.nextLine();
-        scanner.nextLine();
-
+        System.out.println("==========================================================\n");
+        System.out.println("                      [OPÇÕES]                        \n");
+        System.out.println("==========================================================");
+        System.out.println("                      [1] Verificar dados da conta                           ");
+        System.out.println("                      [2] Comprar Livro                        ");
+        System.out.println("                      [3] Sair da conta                            ");
+        escolha = scanner.nextInt();
+        return escolha;
     }
 
+
+
+    //fim espaço usuario
+    
     public void imprimirAdm() {
         Flush();
         System.out.println("==========================================================\n");

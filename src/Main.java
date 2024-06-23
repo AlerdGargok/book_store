@@ -28,6 +28,7 @@ public class Main {
         Cadastro cadastro = new Cadastro();
         boolean menuLoop = true;
         Integer opMenu;
+        Integer tipoLogin = 0;
 
         cadastro.addAdm();
 
@@ -38,7 +39,7 @@ public class Main {
                 
             switch(opMenu) {
                 case 1 :
-                user.imprimirLoginUser();
+                tipoLogin = user.imprimirLoginUser();
                 break;
 
                 case 2:
@@ -49,7 +50,14 @@ public class Main {
                 menuLoop = false;
                 break;
             }
+
+            //area dos menus, 1 - usuario, 2 - adm
+            if (tipoLogin == 1){
+                int menu = user.imprimirMenuUsuario();
+
+            }
         }while(menuLoop);
+
 
         /** 
         Integer escolha;
