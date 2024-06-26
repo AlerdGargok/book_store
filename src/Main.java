@@ -1,17 +1,9 @@
-import java.util.List;
 import java.util.Scanner;
+import model.Estoque;
 
-
-import model.Autor;
-import model.Biblioteca;
-import model.Editora;
-import model.Genero;
-import model.Livro;
 
 import util.*;
 import util.user.Cadastro;
-import util.user.User;
-
 
 /*Faz um loop para imprimir o menu enquanto o usuário não selecionar a opção de sair ou o programa finalizar
 Recebe os valores inseridos pelo usuário na classe interface para adicionar livros e chama o construtor para ser enviado ao arraylist da classe Biblioteca
@@ -24,11 +16,10 @@ public class Main {
 
     public static void main(String[] args) {
         View user = new View();
-        Biblioteca biblioteca = new Biblioteca("dados.txt");
+        //Biblioteca biblioteca = new Biblioteca("dados.txt");
         Cadastro cadastro = new Cadastro();
         boolean menuLoop = true;
         Integer opMenu;
-        Integer tipoLogin = 0;
 
         cadastro.addAdm();
 
@@ -39,36 +30,54 @@ public class Main {
                 
             switch(opMenu) {
                 case 1 :
-                tipoLogin = user.imprimirLoginUser();
-                    if (tipoLogin != 0){
-                        menuLoop = false;
-                    }
+                user.imprimirLoginUser();
                 break;
 
                 case 2:
                 user.imprimirCadastroUser();
                 break;
 
-                case 3:
+                case 4:
                 menuLoop = false;
                 break;
             }
 
         }while(menuLoop);
 
+        /* 
+
         menuLoop = true;
 
         do {
-
              //area dos menus, 1 - usuario, 2 - adm
              if (tipoLogin == 1){
                 int menu = user.imprimirMenuUsuario();
                 //se for um ele vai para os dados de usuario, como ver os livros ja comprados e adicionar saldo
                     if (menu == 1){
-                        user.imprimirDadosUsuario(cadastro.getUsuarioAtual());
+                        //user.imprimirDadosUsuario(cadastro.getUsuarioAtual());
                     }
             }
         } while (menuLoop);
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /** 
         Integer escolha;

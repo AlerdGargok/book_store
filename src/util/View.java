@@ -7,13 +7,14 @@ import util.user.*;
 
 public class View {
     private static Scanner scanner = new Scanner(System.in);
+
     Cadastro cadastro = new Cadastro();
+
     private String tituloLivro;
     private Autor autorLivro;
     private Genero generoLivro;
     private Editora editoraLivro;
     private double valorLivro;
-    //private int cont;
 
     private String username;
     private String senha;
@@ -24,8 +25,7 @@ public class View {
     private boolean senhaValida;
     private boolean cpfRegistrado;
 
-    // Chama as listas estáticas de genero e editora (Já previamente selecionadas
-    // para o usuário)
+    // Chama as listas estáticas de genero e editora (Já previamente selecionadas para o usuário)
     List<Genero> generos = Genero.getnomeGenero();
     List<Editora> editoras = Editora.getnomeEditora();
 
@@ -46,15 +46,28 @@ public class View {
         System.out.println("==========================================================\n");
         System.out.println("                      [1] Login                           ");
         System.out.println("                      [2] Cadastro                        ");
-        System.out.println("                      [3] Sair                            ");
+        System.out.println("                      [3] Administrador                   ");
+        System.out.println("                      [4] Sair                            ");
         System.out.println("==========================================================");
         System.out.println();
         System.out.println();
         System.out.println("Sua escolha: ");
     }
 
+    public void imprimirLoginAdm(){
+        Flush();
+        System.out.println("==========================================================\n");
+        System.out.println("                    [Login - ADM]                         \n");
+        System.out.println("==========================================================");
+
+        senhaValida = false;
+        while(!senhaValida) {
+            System.out.println("                   Insira sua senha:                      \n");
+        }
+    }
+
     
-    public int imprimirLoginUser() {
+    public void imprimirLoginUser() {
         Flush();
         System.out.println("==========================================================\n");
         System.out.println("                    [Login - Usuário]                     \n");
@@ -85,8 +98,8 @@ public class View {
             }
         }
 
-        if(cadastro.verificaAdm(username, senha)) imprimirAdm();
-        else  {
+        //if(cadastro.verificaAdm(username, senha)) imprimirAdm();
+        //else  {
             System.out.println("          Login efetuado com sucesso!            \n");
             cadastro.setUsuarioAtual(username);
             try {
@@ -94,11 +107,13 @@ public class View {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            return 1;
-        }
+            //return 1;
+       // }
         
-        return 0; // caso retorne 0 - deu errado, caso retorne 1- va para o menu de usuario e caso retorne 2 - menu adm
+        //return 0; // caso retorne 0 - deu errado, caso retorne 1- va para o menu de usuario e caso retorne 2 - menu adm
         //arrumar aq dps
+
+        imprimirMenuUsuario();
     }
 
     //espaço para usuario
@@ -109,27 +124,37 @@ public class View {
         System.out.println("                      [BOOK STORE]                        \n");
         System.out.println("==========================================================");
         System.out.println();
-        System.out.printf("                  SEJA BEM VINDO, %s!                      \n", cadastro.getUsuarioAtual().getUsername());
+        System.out.printf("                  SEJA BEM VINDO, %s!                 \n", cadastro.getUsuarioAtual().getUsername());
         System.out.println();
         System.out.println("==========================================================");
+
+        try {
+            Thread.sleep(1000); // Pausa por 2 segundos
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        Flush();
         System.out.println("==========================================================\n");
-        System.out.println("                      [OPÇÕES]                        \n");
+        System.out.println("                  [OPÇÕES DO USUÁRIO]                     \n");
         System.out.println("==========================================================");
-        System.out.println("                      [1] Verificar dados da conta                           ");
-        System.out.println("                      [2] Comprar Livro                        ");
-        System.out.println("                      [3] Sair da conta                            ");
+        System.out.println("             [1] Verificar dados da conta                ");
+        System.out.println("             [2] Comprar Livros                          ");
+        System.out.println("             [3] Sair da conta                           ");
+        System.out.println("==========================================================");
         escolha = scanner.nextInt();
         return escolha;
     }
 
-    public void imprimirDadosUsuario(User usuario){
+    public void imprimirDadosUsuario(Cliente usuario){
         System.out.println("==========================================================\n");
         System.out.println("                      [DADOS DA CONTA]                        \n");
         System.out.println("==========================================================");     
-        System.out.printf("                      Nome da Conta: %s                           \n", cadastro.getUsuarioAtual().getUsername());
-        System.out.printf("                      Saldo da Conta: %.2f                        \n", cadastro.getUsuarioAtual().getSaldo());
-        System.out.println("                      [1] Adicionar Saldo                       ");
-        System.out.println("                      [2] Retornar ao menu                           ");
+        System.out.printf("                    Nome de Usuário: %s                           \n", cadastro.getUsuarioAtual().getUsername());
+        System.out.printf("                    Saldo da Conta: R$ %.2f                        \n", cadastro.getUsuarioAtual().getSaldo());
+        System.out.println();
+        System.out.println("                        [1] Adicionar Saldo                       ");
+        System.out.println("                        [2] Retornar ao menu                           ");
         int escolha = scanner.nextInt();
         if (escolha == 1){
             adicionarSaldo();
@@ -137,11 +162,13 @@ public class View {
 
     }
 
+    
+
     public void adicionarSaldo(){
         System.out.println("==========================================================\n");
         System.out.println("                      [SALDO DA CONTA]                        \n");
         System.out.println("==========================================================");
-        System.out.printf("                      Você possui :%.2f                      \n", cadastro.getUsuarioAtual().getSaldo()); 
+        System.out.printf("                  Você possui :%.2f                      \n", cadastro.getUsuarioAtual().getSaldo()); 
         System.out.println("Adicionar: "); 
         double aumentarSaldo = scanner.nextDouble();
         try {
@@ -151,7 +178,6 @@ public class View {
             System.out.println("Impossivel adicionar saldo!");
         }
     }
-
 
 
     //fim espaço usuario
@@ -209,7 +235,7 @@ public class View {
         }
 
 
-        User novoUsuario = new User(username, cpf, senha);
+        Cliente novoUsuario = new Cliente(username, cpf, senha);
         cadastro.addUsuario(novoUsuario);
 
         System.out.println();

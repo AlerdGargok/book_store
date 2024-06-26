@@ -10,13 +10,13 @@ import util.FileManager;
 
 //Classe responsável por administrar a adição e remoção de livros, além de listar os mesmos que já foram inseridos
 
-public class Biblioteca {
+public class Estoque {
     private static List<Livro> livros;
     Scanner scanner = new Scanner(System.in);
     private FileManager fileManager;
 
     // Inicializa a lista de livros no construtor
-    public Biblioteca(String nomeArquivo) {
+    public Estoque(String nomeArquivo) {
         livros = new ArrayList<>(); 
         fileManager = new FileManager(nomeArquivo);
     }
