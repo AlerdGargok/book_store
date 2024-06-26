@@ -5,10 +5,8 @@ import java.util.Scanner;
 import model.*;
 import util.user.*;
 
-public class View {
+public class View implements testInterface {
     private static Scanner scanner = new Scanner(System.in);
-
-    Cadastro cadastro = new Cadastro();
 
     private String tituloLivro;
     private Autor autorLivro;
@@ -297,10 +295,12 @@ public class View {
         imprimirLoginUser();
     }
 
+    ///////////////////////////
+
     // Imprime o menu principal;
-    public void imprimirMenu() {
+    public void imprimirMenuEstoque() {
         System.out.println("==========================================================\n");
-        System.out.println("               [Gerenciamento de Biblioteca]              \n");
+        System.out.println("               [Gerenciamento de Estoque]                 \n");
         System.out.println("==========================================================");
         System.out.println();
         System.out.println("           -> Escolha uma das opções abaixo: <-           ");

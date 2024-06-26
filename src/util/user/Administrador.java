@@ -2,13 +2,7 @@ package util.user;
 
 import java.util.List;
 
-public class Administrador extends User {
-
-    public Administrador(String username, String cpf, String senha) {
-        super(username, cpf, senha);
-        //TODO Auto-generated constructor stub
-    }
-
+public class Administrador {//extends User
     private String senhaADM = "administrador";
     private List<Cliente> usuarios;
 
@@ -36,6 +30,5 @@ public class Administrador extends User {
 
     //Acesso a todos os pedidos
 
-    //Acesso 
     
 }

@@ -15,31 +15,20 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        View user = new View();
-        //Biblioteca biblioteca = new Biblioteca("dados.txt");
-        Cadastro cadastro = new Cadastro();
+        View tela = new View();
         boolean menuLoop = true;
         Integer opMenu;
 
-        cadastro.addAdm();
-
         do{
-            user.Flush();
-            user.imprimirInicio();
-            opMenu=scanner.nextInt();
+            tela.Flush();
+            tela.imprimirInicio();
+            opMenu = scanner.nextInt();
                 
             switch(opMenu) {
-                case 1 :
-                user.imprimirLoginUser();
-                break;
-
-                case 2:
-                user.imprimirCadastroUser();
-                break;
-
-                case 4:
-                menuLoop = false;
-                break;
+                case 1 -> tela.imprimirLoginUser();
+                case 2 -> tela.imprimirCadastroUser();
+                case 3 -> tela.imprimirLoginAdm(); //ainda não funciona
+                case 4 -> menuLoop = false;
             }
 
         }while(menuLoop);
