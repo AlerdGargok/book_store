@@ -87,7 +87,6 @@ public class Cadastro {
             return true;
             }
         }
+     }
 
-        return false;
-    }
 }   

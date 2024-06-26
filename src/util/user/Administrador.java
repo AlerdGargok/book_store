@@ -5,7 +5,7 @@ import java.util.List;
 public class Administrador {//extends User
     private String senhaADM = "administrador";
     private List<Cliente> usuarios;
-
+    
     public boolean validarSenha(String senha){
         if (senha.equals(senhaADM)) return true;
         return false;

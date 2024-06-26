@@ -64,7 +64,6 @@ public class View implements testInterface {
         }
     }
 
-    
     public void imprimirLoginUser() {
         Flush();
         System.out.println("==========================================================\n");
@@ -476,6 +475,18 @@ public class View implements testInterface {
 
     public double getValorLivro() {
         return valorLivro;
+    }
+
+    public String get_senha() {
+        return senha;
+    }
+
+    public String get_Username() {
+        return username;
+    }
+
+    public String get_Cpf() {
+        return cpf;
     }
 
 }
