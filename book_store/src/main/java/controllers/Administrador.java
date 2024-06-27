@@ -9,7 +9,7 @@ import views.AdmView;
 import views.EstoqueView;
 import controllers.*;
 
-public class Administrador {
+public class Administrador implements interfaceView{
     private final Adm adm = new Adm("adm", null, "administrador", null);
     Cadastro cadastro = new Cadastro();
     List<Cliente> usuarios = cadastro.getUsuarios();
@@ -17,9 +17,11 @@ public class Administrador {
     AdmView admView = new AdmView();
     Estoque estoque = new Estoque("dados.txt");
     Scanner scanner = new Scanner(System.in);
+   
 
-    public boolean validarSenha(String senha){
-        if (senha.equals(adm.getSenha())) return true;
+    public boolean validarSenha(String senha) {
+        if (senha.equals(adm.getSenha()))
+            return true;
         return false;
     }
 
@@ -27,10 +29,12 @@ public class Administrador {
         System.out.println(usuarios);
     }
 
-    public void removerUsuario(String username){
+    public void removerUsuario(String username) {
         for (Cliente usuario : usuarios) {
-            if (usuario.getUsername().equalsIgnoreCase(username)) usuarios.remove(usuario);
-            else System.out.println("Usuário não encontrado!");
+            if (usuario.getUsername().equalsIgnoreCase(username))
+                usuarios.remove(usuario);
+            else
+                System.out.println("Usuário não encontrado!");
         }
     }
 
@@ -43,7 +47,7 @@ public class Administrador {
             Integer escolha = estoqueView.imprimirMenuEstoque();
             switch (escolha) {
                 case 1:
-                estoqueView.adicionarLivro();
+                    estoqueView.adicionarLivro();
 
                     String titulo = estoqueView.get_tituloLivro();
                     Autor autor = estoqueView.get_autorLivro();
@@ -105,50 +109,52 @@ public class Administrador {
         } while (menuLoop);
     }
 
-    //Criar listar usuarios ok?
-    public void gerenciaUsuario(){
+    // Criar listar usuarios ok?
+    public void gerenciaUsuario() {
         boolean menuLoop = true;
         do {
             int escolha = admView.menuGerenciaUsuarios();
-            String pesquisa; 
+            String pesquisa;
             switch (escolha) {
                 // ListarUsuario
-                case 1: 
+                case 1:
                     admView.Flush();
                     System.out.println("Lista de usuários: ");
-                    if (!usuarios.isEmpty()){
+                    if (!usuarios.isEmpty()) {
                         for (Cliente cliente : usuarios) {
                             System.out.println(cliente);
                         }
-                    } else System.out.println("Ainda nao tem usuarios cadastrados...");
-                  
+                    } else
+                        System.out.println("Ainda nao tem usuarios cadastrados...");
+
                     System.out.println("Digite qualquer botão para retornar: ");
                     scanner.nextLine();
                     break;
 
-                //Pesquisar Usuario / remover usuario
-                case 2: 
+                // Pesquisar Usuario / remover usuario
+                case 2:
                     pesquisa = admView.pesquisarUsuario();
                     boolean usuarioExiste = false;
                     int interador = 0;
                     for (Cliente cliente : usuarios) {
                         Cliente usuarioCliente = usuarios.get(interador);
-                        if (cliente.getUsername().equals(pesquisa)){
-                            System.out.println("Usuario existe\nDados Usuario:" );
+                        if (cliente.getUsername().equals(pesquisa)) {
+                            System.out.println("Usuario existe\nDados Usuario:");
                             System.out.println(cliente);
                             System.out.println("deseja remover usuario?\n1- SIM\n2- NÃO");
                             int remover = scanner.nextInt();
                             if (remover == 1) {
-                                usuarios.remove(usuarioCliente); 
+                                usuarios.remove(usuarioCliente);
                                 System.out.println("Usuario removido!");
                             }
                             usuarioExiste = true;
                             break;
                         }
-                        interador+= 1;
+                        interador += 1;
                     }
 
-                    if (!usuarioExiste) System.out.println("Usuario não existe!");
+                    if (!usuarioExiste)
+                        System.out.println("Usuario não existe!");
 
                     System.out.println("Digite qualquer botão para retornar: ");
                     scanner.nextLine();
@@ -161,11 +167,23 @@ public class Administrador {
         } while (menuLoop);
     }
 
-    //Acesso a todos os pedidos
-    public void listarPedidos(){
-        for (Cliente cliente : usuarios) {
-            
-        }
+    // Acesso a todos os pedidos
+    public void listarPedidos() {
+        //try {
+            ArrayList<String> pedidos = carrinho.getPedidos();
+            System.out.println("Lista de pedidos: ");
+            if (!pedidos.isEmpty()) {
+                for (String string : pedidos) {
+                    System.out.println(string);
+                }
+            }
+        //} catch (Exception e) {
+            System.out.println("Nenhum pedido foi realizado ainda!");
+        //}
+
+        System.out.println("Aperte alguma tecla para voltar");
+        scanner.nextLine();
+
     }
-    
+
 }

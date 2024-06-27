@@ -26,6 +26,7 @@ public class AdmView extends View implements interfaceView {
                     administrador.gerenciaUsuario();
                     break;
                 case 3: // Criar gerencia de pedidos
+                    administrador.listarPedidos();
                     break;
                 case 4:
                     return;

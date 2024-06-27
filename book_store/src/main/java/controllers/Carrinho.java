@@ -14,6 +14,7 @@ public class Carrinho implements interfaceView{
     private ArrayList<Livro> carrinho;
     private ArrayList<Livro> livrosComprados;
     private double precoCarrinho;
+    public ArrayList<String> pedidos = new ArrayList<>();
 
     ClienteView clienteView = new ClienteView(); 
     Estoque estoque = new Estoque("dadosEstoque.txt");
@@ -62,6 +63,7 @@ public class Carrinho implements interfaceView{
             saldo-= precoCarrinho;
             for (Livro livro : carrinho) {
                 livrosComprados.add(livro);
+                pedidos.add("Compra do livro: " +livro.getTitulo() + " feita pelo usuario: " + login.getUsuarioAtual().getUsername());
                 estoque.removeLivrosSemTexto(livro.getTitulo());
             }
             carrinho.clear();
@@ -72,6 +74,10 @@ public class Carrinho implements interfaceView{
             scanner.nextLine();
         }
         return saldo;
+    }
+
+    public ArrayList<String> getPedidos() {
+        return pedidos;
     }
 
     // Listar livros comprados
