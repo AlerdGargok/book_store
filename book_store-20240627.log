@@ -69,3 +69,12 @@
 2024-06-27 06:02:36.981 [main] INFO  Main - Inicio do programa
 2024-06-27 06:02:51.921 [main] INFO  controllers.Cadastro - Livro adicionado
 2024-06-27 06:03:05.748 [main] INFO  controllers.Cadastro - Saldo adicionado
+2024-06-27 14:30:19.996 [main] INFO  Main - Inicio do programa
+2024-06-27 14:30:55.637 [main] INFO  models.interfaceView - Um novo Livro foi adicionado!
+2024-06-27 14:30:55.660 [main] INFO  controllers.Cadastro - Livro adicionado
+2024-06-27 14:31:39.138 [main] INFO  controllers.Cadastro - Cadastro de usuário realizado
+2024-06-27 14:32:00.043 [main] INFO  controllers.Cadastro - Saldo adicionado
+2024-06-27 14:43:23.491 [main] INFO  Main - Inicio do programa
+2024-06-27 14:43:51.533 [main] INFO  models.interfaceView - Um novo Livro foi adicionado!
+2024-06-27 14:43:51.545 [main] INFO  controllers.Cadastro - Livro adicionado
+2024-06-27 14:44:08.773 [main] INFO  controllers.Cadastro - Saldo adicionado

@@ -56,6 +56,7 @@ public class Administrador implements interfaceView{
                     double valorLivro = estoqueView.getValorLivro();
 
                     Livro novoLivro = new Livro(titulo, autor, genero, editora, valorLivro);
+                    logger.info("Um novo Livro foi adicionado!");
                     estoqueView.Flush();
                     estoque.addLivros(novoLivro);
                     break;
@@ -64,6 +65,7 @@ public class Administrador implements interfaceView{
                     estoqueView.removerLivros();
                     titulo = scanner.next();
                     estoque.removeLivros(titulo);
+                    logger.info("Um livro foi removido!");
                     break;
 
                 case 3:
@@ -146,6 +148,7 @@ public class Administrador implements interfaceView{
                             if (remover == 1) {
                                 usuarios.remove(usuarioCliente);
                                 System.out.println("Usuario removido!");
+                                logger.info("Usuario: " +pesquisa + " foi removido! ");
                             }
                             usuarioExiste = true;
                             break;

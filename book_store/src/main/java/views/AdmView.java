@@ -44,7 +44,7 @@ public class AdmView extends View implements interfaceView {
         System.out.println("==========================================================");
         System.out.println("             [1] Listar Usuario                 ");
         System.out.println("             [2] Pesquisar Usuario                       ");
-        System.out.println("             [4] Voltar                            ");
+        System.out.println("             [3] Voltar                            ");
         System.out.println("==========================================================");
         escolha = scanner.nextInt();
         return escolha;

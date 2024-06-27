@@ -233,6 +233,7 @@ public class Estoque {
         return;
     }
 
+
     //Criar um metodo para remover e para pesquisar um livro (não sei se precisa ser por autor, genero etc... talvez só titulo)
     public void removeLivros(String titulo){
         Livro livro = pesquisarLivro(titulo);

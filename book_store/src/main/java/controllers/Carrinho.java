@@ -64,6 +64,7 @@ public class Carrinho implements interfaceView{
             for (Livro livro : carrinho) {
                 livrosComprados.add(livro);
                 pedidos.add("Compra do livro: " +livro.getTitulo() + " feita pelo usuario: " + login.getUsuarioAtual().getUsername());
+                logger.info("Compra do livro: " +livro.getTitulo() + " feita pelo usuario: " + login.getUsuarioAtual().getUsername());
                 estoque.removeLivrosSemTexto(livro.getTitulo());
             }
             carrinho.clear();
@@ -125,9 +126,15 @@ public class Carrinho implements interfaceView{
                             
                             
                             break;
-
+                                //remover produto do carrinho
                         case 2:
-
+                                String pesquisa = clienteView.removerDoCarrinho();
+                                Livro livroRemover = estoque.pesquisarLivro(pesquisa);
+                                if (livroRemover != null){
+                                    removerDoCarrinho(livroRemover);
+                                    System.out.println("Livro " + livroRemover.getTitulo() + " foi removido com sucesso!");
+                                }
+                                else System.out.println("Não foi possivel remover livro!");
                             break;
                     
                         default:

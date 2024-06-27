@@ -130,4 +130,13 @@ public class ClienteView extends View implements interfaceView {
         return escolha;
     }
 
+    public String removerDoCarrinho(){
+        System.out.println("==========================================================\n");
+        System.out.println("                  [REMOVER DO CARRINHO]                     \n");
+        System.out.println("==========================================================");
+        System.out.println("Digite o nome do livro que deseja remover: ");
+        String escolha = scanner.next();
+        return escolha;
+    }
+
 }
