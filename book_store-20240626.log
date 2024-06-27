@@ -1,0 +1,77 @@
+2024-06-26 21:59:33.041 [main] INFO  Main - Test log
+2024-06-26 21:59:34.393 [main] ERROR views.MainView - Opção Inválida
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.next(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at views.MainView.imprimirInicio(MainView.java:48) [classes/:?]
+	at Main.main(Main.java:33) [classes/:?]
+2024-06-26 21:59:34.408 [main] ERROR Main - Opção Inválida
+2024-06-26 21:59:35.052 [main] ERROR views.MainView - Opção Inválida
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.next(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at views.MainView.imprimirInicio(MainView.java:48) [classes/:?]
+	at Main.main(Main.java:33) [classes/:?]
+2024-06-26 21:59:35.052 [main] ERROR Main - Opção Inválida
+2024-06-26 21:59:35.561 [main] ERROR views.MainView - Opção Inválida
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.next(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at views.MainView.imprimirInicio(MainView.java:48) [classes/:?]
+	at Main.main(Main.java:33) [classes/:?]
+2024-06-26 21:59:35.562 [main] ERROR Main - Opção Inválida
+2024-06-26 22:14:10.724 [main] INFO  Main - Test log
+2024-06-26 22:14:11.699 [main] ERROR views.MainView - Opção Inválida
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.next(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at views.MainView.imprimirInicio(MainView.java:48) [classes/:?]
+	at Main.main(Main.java:33) [classes/:?]
+2024-06-26 22:14:11.943 [main] ERROR views.MainView - Opção Inválida
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.next(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at views.MainView.imprimirInicio(MainView.java:48) [classes/:?]
+	at Main.main(Main.java:33) [classes/:?]
+2024-06-26 22:14:12.132 [main] ERROR views.MainView - Opção Inválida
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.next(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at views.MainView.imprimirInicio(MainView.java:48) [classes/:?]
+	at Main.main(Main.java:33) [classes/:?]
+2024-06-26 22:14:12.311 [main] ERROR views.MainView - Opção Inválida
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.next(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at views.MainView.imprimirInicio(MainView.java:48) [classes/:?]
+	at Main.main(Main.java:33) [classes/:?]
+2024-06-26 22:14:12.491 [main] ERROR views.MainView - Opção Inválida
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.next(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at views.MainView.imprimirInicio(MainView.java:48) [classes/:?]
+	at Main.main(Main.java:33) [classes/:?]
+2024-06-26 22:14:12.614 [main] ERROR views.MainView - Opção Inválida
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.next(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
+	at views.MainView.imprimirInicio(MainView.java:48) [classes/:?]
+	at Main.main(Main.java:33) [classes/:?]

@@ -2,11 +2,9 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import model.Estoque;
-
-
-import util.*;
-import util.user.Cadastro;
+import controllers.*;
+import views.*;
+import models.*;
 
 /*Faz um loop para imprimir o menu enquanto o usuário não selecionar a opção de sair ou o programa finalizar
 Recebe os valores inseridos pelo usuário na classe interface para adicionar livros e chama o construtor para ser enviado ao arraylist da classe Biblioteca
@@ -16,25 +14,41 @@ Recebe os valores de pesquisa e remoção dos itens para serem aplicados na clas
 public class Main {
 
     private static final Logger logger = LogManager.getLogger(Main.class);
-
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         logger.info("Test log");
-        View tela = new View();
+
+        MainView mainView = new MainView();
+        CadastroView cadastroView = new CadastroView();
+        LoginView loginView = new LoginView();
+        ClienteView clienteView = new ClienteView();
+
         boolean menuLoop = true;
-        Integer opMenu;
+        Integer opMenu = 0;
+   
 
         do{
-            tela.Flush();
-            tela.imprimirInicio();
-            opMenu = scanner.nextInt();
+            cadastroView.Flush();
+            opMenu = mainView.imprimirInicio(opMenu);
                 
             switch(opMenu) {
-                case 1 -> tela.imprimirLoginUser();
-                case 2 -> tela.imprimirCadastroUser();
-                case 3 -> tela.imprimirLoginAdm(); //ainda não funciona
-                case 4 -> menuLoop = false;
+                case 1 : 
+                loginView.imprimirLoginUser();
+                break;
+
+                case 2 :
+                cadastroView.imprimirCadastroUser();
+                break;
+
+                case 3 :
+                loginView.imprimirLoginAdm(); //ainda não funciona
+                break;
+
+                case 4 :
+                menuLoop = false;
+                break;
+
             }
 
         }while(menuLoop);
