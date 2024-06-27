@@ -11,11 +11,6 @@ public class Cadastro {
     private static List<Cliente> usuarios = new ArrayList<>(); 
     Logger logger = LogManager.getLogger(Cadastro.class);
 
-    public void userTESTE(){
-        Cliente userTeste = new Cliente("A", "123", "123", 0.0);
-        usuarios.add(userTeste);
-    }
-
     public void addUsuario(String username, String cpf, String senha){
         Cliente novoUsuario = new Cliente(username, cpf, senha, 0.0);
         usuarios.add(novoUsuario);

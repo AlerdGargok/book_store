@@ -46,6 +46,7 @@ public class ClienteView extends View implements interfaceView {
     }
 
     public void imprimirDadosUsuario(Cliente usuario) {
+        Flush();
         System.out.println("==========================================================\n");
         System.out.println("                      [DADOS DA CONTA]                        \n");
         System.out.println("==========================================================");
@@ -64,6 +65,7 @@ public class ClienteView extends View implements interfaceView {
     }
 
     public void adicionarSaldo() {
+        Flush();
         System.out.println("==========================================================\n");
         System.out.println("                      [SALDO DA CONTA]                        \n");
         System.out.println("==========================================================");
@@ -80,6 +82,7 @@ public class ClienteView extends View implements interfaceView {
     }
 
     public int imprimirMenuComprarLivros(){
+        Flush();
         int escolha;
         System.out.println("==========================================================\n");
         System.out.println("                  [COMPRAR LIVROS]                     \n");
@@ -94,6 +97,7 @@ public class ClienteView extends View implements interfaceView {
     }
 
     public String imprimirCompraLivroNome(){
+        Flush();
         String nome;
         System.out.println("==========================================================\n");
         System.out.println("                  [COMPRAR LIVRO POR NOME]                     \n");
@@ -103,6 +107,7 @@ public class ClienteView extends View implements interfaceView {
         return nome;
     }
     public boolean adicionarlivroaoCarrinho(Livro livro){
+        Flush();
         int escolha;
         System.out.println(livro);
             System.out.println("Deseja adicionar esse livro ao carrinho?\n1- SIM\n2-NAO");
@@ -131,6 +136,7 @@ public class ClienteView extends View implements interfaceView {
     }
 
     public String removerDoCarrinho(){
+        Flush();
         System.out.println("==========================================================\n");
         System.out.println("                  [REMOVER DO CARRINHO]                     \n");
         System.out.println("==========================================================");

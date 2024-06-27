@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import controllers.Cadastro;
 
+//Classe responsável por gerenciar as ações do cliente
 public class Cliente extends User {
 
     Logger logger = LogManager.getLogger(Cadastro.class);
@@ -16,15 +17,13 @@ public class Cliente extends User {
     }
 
     //area relacionada a compra dos livros
-    //lista dos livros que ele comprou
+    //lista dos livros que o usuário comprou
     private ArrayList<Livro> livrosComprados = new ArrayList<Livro>();
     //quando comprar um livro adicionar na lista
     public void addLivrosComprado (Livro livro){
         livrosComprados.add(livro);
     }
-    //para listar os livros que ele ja comprou
-    //preciso que termine a parte de usuario para poder fazer que quando a pessoa tem saldo e compre o livro
-    //remova da biblioteca e adicione aqui
+
     public void listarLivrosComprados(){
         for (Livro livro : livrosComprados) {
             System.out.println(livro);

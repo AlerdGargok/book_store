@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import models.*;
 import views.AdmView;
 import views.EstoqueView;
+import views.MainView;
 import controllers.*;
+
+//Classe responsável por gerenciar as operações de Administrador
 
 public class Administrador implements interfaceView{
     private final Adm adm = new Adm("adm", null, "administrador", null);
@@ -17,27 +23,31 @@ public class Administrador implements interfaceView{
     AdmView admView = new AdmView();
     Estoque estoque = new Estoque("dados.txt");
     Scanner scanner = new Scanner(System.in);
+    Logger logger = LogManager.getLogger(Administrador.class);
    
-
+    //Valida se a senha inserida está correta
     public boolean validarSenha(String senha) {
         if (senha.equals(adm.getSenha()))
             return true;
         return false;
     }
 
+    //Listar usuários cadastrados
     public void listUsernames(List<Cliente> usuarios) {
         System.out.println(usuarios);
     }
 
+    //Remove um usuário cadastrado
     public void removerUsuario(String username) {
         for (Cliente usuario : usuarios) {
-            if (usuario.getUsername().equalsIgnoreCase(username))
+            if (usuario.getUsername().equalsIgnoreCase(username)) { 
                 usuarios.remove(usuario);
-            else
-                System.out.println("Usuário não encontrado!");
+                logger.info("Usuário removido" ,usuario);
+            }else System.out.println("Usuário não encontrado!");
         }
     }
 
+    //Loop de menu que direciona as opções de gerenciamento de estoque de livros
     public void gerenciamentoEstoque() {
         boolean menuLoop = true;
         String procura; // variavel para procurar por autor, genero ou editora
@@ -111,7 +121,7 @@ public class Administrador implements interfaceView{
         } while (menuLoop);
     }
 
-    // Criar listar usuarios ok?
+    //Loop de menu que direciona as opções de gerenciamento de usuários
     public void gerenciaUsuario() {
         boolean menuLoop = true;
         do {
@@ -172,7 +182,7 @@ public class Administrador implements interfaceView{
 
     // Acesso a todos os pedidos
     public void listarPedidos() {
-        //try {
+        try {
             ArrayList<String> pedidos = carrinho.getPedidos();
             System.out.println("Lista de pedidos: ");
             if (!pedidos.isEmpty()) {
@@ -180,9 +190,10 @@ public class Administrador implements interfaceView{
                     System.out.println(string);
                 }
             }
-        //} catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Nenhum pedido foi realizado ainda!");
-        //}
+            logger.error("Nenhum pedido", e);
+        }
 
         System.out.println("Aperte alguma tecla para voltar");
         scanner.nextLine();

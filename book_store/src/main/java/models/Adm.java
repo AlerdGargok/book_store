@@ -1,5 +1,6 @@
 package models;
 
+// Cria o objeto ADM
 public class Adm extends User{
 
     public Adm(String username, String cpf, String senha, Double saldo) {

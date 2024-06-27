@@ -7,12 +7,15 @@ import org.apache.logging.log4j.Logger;
 
 import models.*;
 
+
+//Classe responsável pelo Login dos usuários
 public class Login {
     Cliente usuarioAtual;
     Cadastro cadastro = new Cadastro();
     List<Cliente> usuarios = cadastro.getUsuarios();
     Logger logger = LogManager.getLogger(Cadastro.class);
 
+    //Define qual usuário está logado
     public void setUsuarioAtual(String username, String senha) {
         String cpf = "0";
 
@@ -30,10 +33,12 @@ public class Login {
         }
     }
 
+    //Retorna o usuário logado
     public Cliente getUsuarioAtual() {
         return usuarioAtual;
-    }
+    }   
 
+    //Cadastra uma nova senha para o usuário
     public void recuperarSenha(String cpf, String novaSenha){
         Boolean cpfValido = cadastro.validarUser_Cpf(cpf);
 

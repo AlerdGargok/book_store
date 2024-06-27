@@ -3,23 +3,25 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import models.*;
-import models.Livro;
 import views.ClienteView;
 
+//Classe responsável por gerenciar as compras de livros
 public class Carrinho implements interfaceView{
 
-    //TA FEITO PORÉM seria legal essa clase ser uma extensão do user, já que faz sentido cada um ter seu carrinho
-    //talvez adicionar como classe abstrata sei lá
     private ArrayList<Livro> carrinho;
     private ArrayList<Livro> livrosComprados;
     private double precoCarrinho;
     public ArrayList<String> pedidos = new ArrayList<>();
+    Logger logger = LogManager.getLogger(Carrinho.class);
 
     ClienteView clienteView = new ClienteView(); 
     Estoque estoque = new Estoque("dadosEstoque.txt");
 
-
+    //Inicializa o Carrinho
     public Carrinho() {
         this.carrinho = new ArrayList<>();
         this.livrosComprados = new ArrayList<>();
@@ -30,6 +32,7 @@ public class Carrinho implements interfaceView{
     public void adicionarAoCarrinho(Livro livro) {
         carrinho.add(livro);
         System.out.println(livro.getTitulo() + " foi adicionado ao carrinho.");
+        logger.info("Livro adicionado ao carrinho", livro);
         precoCarrinho += livro.getValor();
     }
 
@@ -38,6 +41,7 @@ public class Carrinho implements interfaceView{
         if (carrinho.remove(livro)) {
             precoCarrinho -= livro.getValor();
             System.out.println(livro.getTitulo() + " foi removido do carrinho.");
+            logger.info("Livro removido do carrinho", livro);
         } else {
             System.out.println(livro.getTitulo() + " não está no carrinho.");
         }
@@ -69,6 +73,7 @@ public class Carrinho implements interfaceView{
             }
             carrinho.clear();
             System.out.println("Compra confirmada. Livros foram movidos para a lista de comprados.");
+            logger.info("Compra confirmada");
         } 
         else {
             System.out.println("O carrinho está vazio ou não há saldo suficiente!");
@@ -133,6 +138,7 @@ public class Carrinho implements interfaceView{
                                 if (livroRemover != null){
                                     removerDoCarrinho(livroRemover);
                                     System.out.println("Livro " + livroRemover.getTitulo() + " foi removido com sucesso!");
+                                    logger.info("Livro removido" ,livroRemover.getTitulo());
                                 }
                                 else System.out.println("Não foi possivel remover livro!");
                             break;

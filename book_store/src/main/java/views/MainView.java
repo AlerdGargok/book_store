@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 
 import models.*;
 
+
+//View/Menu inicial  
 public class MainView implements interfaceView {
 
     Logger logger = LogManager.getLogger(MainView.class);
@@ -46,30 +48,4 @@ public class MainView implements interfaceView {
 
         return opMenu;
     }
-
-
-
-    //espaço para usuario
-  
-
-
-    //fim espaço usuario
-    
-    public void imprimirAdm() {
-        Flush();
-        System.out.println("==========================================================\n");
-        System.out.println("                      [BOOK STORE]                        \n");
-        System.out.println("==========================================================");
-        scanner.nextLine();
-        scanner.nextLine();
-    }
-
-    //
-    
-
-    ///////////////////////////
-
-    // Imprime o menu principal;
-   
-
 }

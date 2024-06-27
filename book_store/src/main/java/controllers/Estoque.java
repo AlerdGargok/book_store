@@ -209,8 +209,6 @@ public class Estoque {
            scanner.nextLine();
    }
 
-    
-
     //metodo para procurar livro por titulo e retorna um livro
     //pesquisar serve para metodos enquanto procurar para print de um livro
     public Livro pesquisarLivro(String titulo){
