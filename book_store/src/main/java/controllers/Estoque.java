@@ -248,6 +248,20 @@ public class Estoque {
             }
         salvarDados();
     }
+    public void removeLivrosSemTexto(String titulo){
+        Livro livro = pesquisarLivro(titulo);
+        if (livro != null){
+            System.out.println("Removendo livro: " +livro.getTitulo());
+            livros.remove(livro);
+        } else System.out.println("Livro nao encontrado...");
+        System.out.println("Voltando ao menu...");
+        try {
+            Thread.sleep(2000); // Pausa por 2 segundos
+            } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            }
+        salvarDados();
+    }
 
     //metodo para salvar os dados no arquivo
     private void salvarDados() {

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import models.*;
+import views.AdmView;
 import views.EstoqueView;
 import controllers.*;
 
@@ -13,6 +14,7 @@ public class Administrador {
     Cadastro cadastro = new Cadastro();
     List<Cliente> usuarios = cadastro.getUsuarios();
     EstoqueView estoqueView = new EstoqueView();
+    AdmView admView = new AdmView();
     Estoque estoque = new Estoque("dados.txt");
     Scanner scanner = new Scanner(System.in);
 
@@ -104,12 +106,66 @@ public class Administrador {
     }
 
     //Criar listar usuarios ok?
+    public void gerenciaUsuario(){
+        boolean menuLoop = true;
+        do {
+            int escolha = admView.menuGerenciaUsuarios();
+            String pesquisa; 
+            switch (escolha) {
+                // ListarUsuario
+                case 1: 
+                    admView.Flush();
+                    System.out.println("Lista de usuários: ");
+                    if (!usuarios.isEmpty()){
+                        for (Cliente cliente : usuarios) {
+                            System.out.println(cliente);
+                        }
+                    } else System.out.println("Ainda nao tem usuarios cadastrados...");
+                  
+                    System.out.println("Digite qualquer botão para retornar: ");
+                    scanner.nextLine();
+                    break;
 
-    //Criar remover usuario ok? 
+                //Pesquisar Usuario / remover usuario
+                case 2: 
+                    pesquisa = admView.pesquisarUsuario();
+                    boolean usuarioExiste = false;
+                    int interador = 0;
+                    for (Cliente cliente : usuarios) {
+                        Cliente usuarioCliente = usuarios.get(interador);
+                        if (cliente.getUsername().equals(pesquisa)){
+                            System.out.println("Usuario existe\nDados Usuario:" );
+                            System.out.println(cliente);
+                            System.out.println("deseja remover usuario?\n1- SIM\n2- NÃO");
+                            int remover = scanner.nextInt();
+                            if (remover == 1) {
+                                usuarios.remove(usuarioCliente); 
+                                System.out.println("Usuario removido!");
+                            }
+                            usuarioExiste = true;
+                            break;
+                        }
+                        interador+= 1;
+                    }
 
-    //Acesso a cadastro/remoção de livros
+                    if (!usuarioExiste) System.out.println("Usuario não existe!");
+
+                    System.out.println("Digite qualquer botão para retornar: ");
+                    scanner.nextLine();
+                    break;
+
+                default:
+                    menuLoop = false;
+                    break;
+            }
+        } while (menuLoop);
+    }
 
     //Acesso a todos os pedidos
-
+    public void listarPedidos(){
+        for (Cliente cliente : usuarios) {
+            
+        }
+    }
     
 }

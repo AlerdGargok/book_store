@@ -1,16 +1,23 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
+import models.*;
 import models.Livro;
+import views.ClienteView;
 
-public class Carrinho {
+public class Carrinho implements interfaceView{
 
     //TA FEITO PORÉM seria legal essa clase ser uma extensão do user, já que faz sentido cada um ter seu carrinho
     //talvez adicionar como classe abstrata sei lá
     private ArrayList<Livro> carrinho;
     private ArrayList<Livro> livrosComprados;
     private double precoCarrinho;
+
+    ClienteView clienteView = new ClienteView(); 
+    Estoque estoque = new Estoque("dadosEstoque.txt");
+
 
     public Carrinho() {
         this.carrinho = new ArrayList<>();
@@ -55,12 +62,14 @@ public class Carrinho {
             saldo-= precoCarrinho;
             for (Livro livro : carrinho) {
                 livrosComprados.add(livro);
+                estoque.removeLivrosSemTexto(livro.getTitulo());
             }
             carrinho.clear();
             System.out.println("Compra confirmada. Livros foram movidos para a lista de comprados.");
         } 
         else {
             System.out.println("O carrinho está vazio ou não há saldo suficiente!");
+            scanner.nextLine();
         }
         return saldo;
     }
@@ -76,4 +85,56 @@ public class Carrinho {
             }
         }
     }
+
+    public void comprarLivros(){
+        boolean menuLoop = true;
+        do {
+            int opcao = clienteView.imprimirMenuComprarLivros();
+            switch (opcao) {
+                //somente listar os livros disponiveis
+                case 1:
+                    estoque.imprimirLivrosOrdenados();
+                    break;
+                //comprar e adicionar um livro ao carrinho
+                case 2:
+                    String procura = clienteView.imprimirCompraLivroNome();
+                    if (estoque.pesquisarLivro(procura) != null){
+                        Livro livropesquisado = estoque.pesquisarLivro(procura);
+                        clienteView.adicionarlivroaoCarrinho(livropesquisado);
+                    }
+                    break;
+                //carrinho onde é possivel comprar os produtos
+                case 3:
+                    int carrinhoEscolha = clienteView.imprimirMenuCarrinho();
+                    switch (carrinhoEscolha) {
+                        case 1:
+
+                                try {
+                                    double novoSaldo = confirmarCompra(login.getUsuarioAtual().getSaldo());
+                                    login.getUsuarioAtual().setSaldo(novoSaldo);
+
+                                } catch (Exception e) {
+                                    System.out.println("Nao foi possivel comprar os itens do carrinho!;");
+                                }
+                            
+                            
+                            break;
+
+                        case 2:
+
+                            break;
+                    
+                        default:
+                            break;
+                    }
+                    break;
+
+                default:
+                    menuLoop = false;
+                    break;
+            }
+
+        } while (menuLoop);
+    }
+
 }

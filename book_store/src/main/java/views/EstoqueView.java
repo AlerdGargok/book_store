@@ -19,7 +19,7 @@ public class EstoqueView extends View implements interfaceView{
     List<Editora> editoras = Editora.getnomeEditora();
 
     public Integer imprimirMenuEstoque() {
-        Integer escolha = scanner.nextInt();
+        Integer escolha;
         Flush();
         System.out.println("==========================================================\n");
         System.out.println("               [Gerenciamento de Estoque]                 \n");
@@ -37,7 +37,7 @@ public class EstoqueView extends View implements interfaceView{
         System.out.println();
         System.out.println();
         System.out.println("Sua escolha: ");
-        scanner.next();
+
         escolha = scanner.nextInt();
 
         if ((escolha /1) != escolha) System.out.println("Entrada incorreta!");

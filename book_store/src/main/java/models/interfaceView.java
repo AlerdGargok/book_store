@@ -17,6 +17,7 @@ public interface interfaceView {
     AdmView admView = new AdmView();
     EstoqueView estoqueView = new EstoqueView();
     Estoque estoque = new Estoque("dados.txt");
+    Carrinho carrinho = new Carrinho();
 
     Cadastro cadastro = new Cadastro();
     Administrador administrador = new Administrador();
