@@ -1,7 +1,5 @@
 package views;
 
-import java.util.InputMismatchException;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,7 +22,23 @@ public class LoginView extends View implements interfaceView {
         senhaValida = false;
         while(!senhaValida) {
             System.out.println("                   Insira sua senha:                      \n");
+            senha = scanner.next();
+            senhaValida = administrador.validarSenha(senha);
+
+            if (!senhaValida) {
+                System.out.println("          Senha inválida, digite novamente             \n");
+            }
+
+            System.out.println("          Login efetuado com sucesso!            \n");
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            } 
         }
+
+        admView.imprimirMenuADM();
     }
 
     public void imprimirLoginUser() {
@@ -59,13 +73,15 @@ public class LoginView extends View implements interfaceView {
         }
 
             System.out.println("          Login efetuado com sucesso!            \n");
-            cadastro.setUsuarioAtual(username);
+            login.setUsuarioAtual(username, senha);
+
             try {
                 Thread.sleep(2000); // Pausa por 2 segundos
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             } 
-        //imprimirMenuUsuario();
+
+        clienteView.imprimirMenuUsuario();
 
     }
 
@@ -108,6 +124,9 @@ public class LoginView extends View implements interfaceView {
                 System.out.println("          Senha inválida, digite novamente             \n");
             }
         }
+
+        login.recuperarSenha(cpf, senha);
+
         System.out.println();
         System.out.println("     Senha cadastrada com sucesso! Voltando para o menu...     \n");
         try {
@@ -115,7 +134,5 @@ public class LoginView extends View implements interfaceView {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-
-        imprimirLoginUser();
     }
 }

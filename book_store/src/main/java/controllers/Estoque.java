@@ -6,12 +6,16 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import models.Livro;
 
 //Classe responsável por administrar a adição e remoção de livros, além de listar os mesmos que já foram inseridos
 
 public class Estoque {
     private static List<Livro> livros;
+    Logger logger = LogManager.getLogger(Cadastro.class);
     Scanner scanner = new Scanner(System.in);
     private FileManager fileManager;
 
@@ -24,6 +28,7 @@ public class Estoque {
     //Adiciona um objeto livro criado na Main em um arraylist 
     public void addLivros(Livro livro){
         livros.add(livro);
+        logger.info("Livro adicionado", livro);
 
         System.out.println("Livro adicionado com sucesso!\n");
         System.out.println("Voltando para o menu...");

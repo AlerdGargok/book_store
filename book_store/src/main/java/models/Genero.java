@@ -26,8 +26,6 @@ public class Genero {
         return nome;
     }
 
-// mudar para controller
-
     static {
         Genero genero1 = new Genero("[1] Romance");
         Genero genero2 = new Genero("[2] Infatil");

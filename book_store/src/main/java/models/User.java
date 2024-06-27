@@ -6,11 +6,11 @@ public abstract class User {
     protected String cpf;
     protected double saldo;
 
-    public User(String username, String cpf, String senha) {
+    public User(String username, String cpf, String senha, Double saldo) {
         this.username = username;
         this.senha = senha;
         this.cpf = cpf;
-        this.saldo = 0;
+        this.saldo = saldo;
     }
 
     public String getUsername() {
@@ -26,6 +26,7 @@ public abstract class User {
     }
 
     public void setSenha(String senha) {
+
         this.senha = senha;
     }
 
@@ -44,5 +45,10 @@ public abstract class User {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
+
+    @Override
+    public String toString() {
+    return "Username: " + username + ", Senha: " + senha + ", CPF: " + cpf + ", Saldo: " + saldo;
+}
 
 }

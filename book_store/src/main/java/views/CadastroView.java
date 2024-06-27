@@ -50,15 +50,15 @@ public class CadastroView extends View implements interfaceView  {
             }
         }
 
-
-        Cliente novoUsuario = new Cliente(username, cpf, senha);
-        cadastro.addUsuario(novoUsuario);
+        cadastro.addUsuario(username, cpf, senha);
 
         System.out.println();
         System.out.println("   Cadastro concluído com sucesso! Voltando para o menu...     \n");
+
         try {
-            Thread.sleep(2000); // Pausa por 2 segundos
+            Thread.sleep(2000); 
         } catch (InterruptedException e) {
+            logger.error("Programa interrompido" ,e);
             Thread.currentThread().interrupt();
         }
     }

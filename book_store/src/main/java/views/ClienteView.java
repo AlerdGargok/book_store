@@ -11,7 +11,7 @@ public class ClienteView extends View implements interfaceView {
         System.out.println("                      [BOOK STORE]                        \n");
         System.out.println("==========================================================");
         System.out.println();
-        System.out.printf("                  SEJA BEM VINDO, %s!                 \n", cadastro.getUsuarioAtual().getUsername());
+        System.out.printf("                  SEJA BEM VINDO, %s!                 \n", login.getUsuarioAtual().getUsername());
         System.out.println();
         System.out.println("==========================================================");
 
@@ -37,8 +37,8 @@ public class ClienteView extends View implements interfaceView {
         System.out.println("==========================================================\n");
         System.out.println("                      [DADOS DA CONTA]                        \n");
         System.out.println("==========================================================");     
-        System.out.printf("                    Nome de Usuário: %s                           \n", cadastro.getUsuarioAtual().getUsername());
-        System.out.printf("                    Saldo da Conta: R$ %.2f                        \n", cadastro.getUsuarioAtual().getSaldo());
+        System.out.printf("                    Nome de Usuário: %s                           \n", login.getUsuarioAtual().getUsername());
+        System.out.printf("                    Saldo da Conta: R$ %.2f                        \n", login.getUsuarioAtual().getSaldo());
         System.out.println();
         System.out.println("                        [1] Adicionar Saldo                       ");
         System.out.println("                        [2] Retornar ao menu                           ");
@@ -53,11 +53,11 @@ public class ClienteView extends View implements interfaceView {
         System.out.println("==========================================================\n");
         System.out.println("                      [SALDO DA CONTA]                        \n");
         System.out.println("==========================================================");
-        System.out.printf("                  Você possui :%.2f                      \n", cadastro.getUsuarioAtual().getSaldo()); 
+        System.out.printf("                  Você possui :%.2f                      \n", login.getUsuarioAtual().getSaldo()); 
         System.out.println("Adicionar: "); 
         double aumentarSaldo = scanner.nextDouble();
         try {
-            cadastro.getUsuarioAtual().adicionarSaldo(aumentarSaldo);
+            login.getUsuarioAtual().adicionarSaldo(aumentarSaldo);
             System.out.println("Saldo adicionado, Retornando...");
         } catch (Exception e) {
             System.out.println("Impossivel adicionar saldo!");

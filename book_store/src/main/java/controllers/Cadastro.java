@@ -2,33 +2,24 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import models.Cliente;
-import views.*;
 
 public class Cadastro {
     private static List<Cliente> usuarios = new ArrayList<>(); 
-    private static Cliente usuarioAtual;
+    Logger logger = LogManager.getLogger(Cadastro.class);
 
-    //metodo para atualizar o usuario atual com nick
-    //preciso que mude para cpf, quando se logar resgatar o cpf do meliante e colocar aq
-    //assim nao da conflito com ninguem valeu
-
-    public void setUsuarioAtual(String nick) {
-        for (Cliente usuario : usuarios) {
-            if (usuario.getUsername().equalsIgnoreCase(nick)) {
-                Cadastro.usuarioAtual = usuario;
-            }
-        }
+    public void userTESTE(){
+        Cliente userTeste = new Cliente("A", "123", "123", 0.0);
+        usuarios.add(userTeste);
     }
 
-    public Cliente getUsuarioAtual() {
-        return usuarioAtual;
-    }
-
-    //fim da area do usuario atual
-
-    public void addUsuario(Cliente novoUsuario){
+    public void addUsuario(String username, String cpf, String senha){
+        Cliente novoUsuario = new Cliente(username, cpf, senha, 0.0);
         usuarios.add(novoUsuario);
+        logger.info("Cadastro de usuário realizado");
     }
 
     public boolean validarUser(String username) {
@@ -90,5 +81,9 @@ public class Cadastro {
 
         return false;
      }
+
+     public List<Cliente> getUsuarios() {
+        return usuarios;
+    }
 
 }   

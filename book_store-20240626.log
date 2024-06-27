@@ -75,3 +75,13 @@ java.util.InputMismatchException: null
 	at java.base/java.util.Scanner.nextInt(Unknown Source) ~[?:?]
 	at views.MainView.imprimirInicio(MainView.java:48) [classes/:?]
 	at Main.main(Main.java:33) [classes/:?]
+2024-06-26 23:04:50.806 [main] INFO  Main - Test log
+2024-06-26 23:15:33.453 [main] INFO  Main - Test log
+2024-06-26 23:17:02.524 [main] INFO  Main - Test log
+2024-06-26 23:27:20.265 [main] INFO  Main - Test log
+2024-06-26 23:40:06.732 [main] INFO  Main - Test log
+2024-06-26 23:48:00.607 [main] INFO  Main - Test log
+2024-06-26 23:49:49.326 [main] INFO  Main - Test log
+2024-06-26 23:51:27.161 [main] INFO  Main - Test log
+2024-06-26 23:53:47.799 [main] INFO  Main - Test log
+2024-06-26 23:56:50.447 [main] INFO  Main - Test log

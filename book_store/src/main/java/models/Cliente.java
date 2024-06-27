@@ -2,49 +2,18 @@ package models;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import controllers.Cadastro;
+
 public class Cliente extends User {
 
-    public Cliente(String username, String cpf, String senha) {
-        super(username, cpf, senha);
-    }
+    Logger logger = LogManager.getLogger(Cadastro.class);
 
-    public String getUsername() {
-        return username;
+    public Cliente(String username, String cpf, String senha, Double saldo) {
+        super(username, cpf, senha, saldo);
     }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public String getCpf(){
-        return cpf;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-    
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
-    @Override
-    public String toString() {
-    return "Username: " + username + ", Senha: " + senha + ", CPF: " + cpf;
-}
-    
-    //SERIA INTERESSANTE JOGAR ESSA PARTE PARA UMA OUTRA CLASSE SOMENTE DE COMPRAS \/\/\/\/\/\/\/\/\/\/
 
     //area relacionada a compra dos livros
     //lista dos livros que ele comprou
@@ -65,10 +34,19 @@ public class Cliente extends User {
     public boolean adicionarSaldo(double saldomais){
         try {
             saldo+= saldomais;
+            logger.info("Saldo adicionado", saldomais);
             return true;
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public ArrayList<Livro> getLivrosComprados() {
+        return livrosComprados;
+    }
+
+    public void setLivrosComprados(ArrayList<Livro> livrosComprados) {
+        this.livrosComprados = livrosComprados;
     }
 
     

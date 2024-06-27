@@ -26,8 +26,6 @@ public class Editora {
         return nome;
     }
 
-    // mudar para controller
-
     static {
         Editora editora1 = new Editora("[1] Companhia das Letras");
         Editora editora2 = new Editora("[2] Record");
